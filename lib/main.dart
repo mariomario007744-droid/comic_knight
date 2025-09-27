@@ -6,11 +6,11 @@ void main(){
 }
 
 class Comic_Knihgt extends StatelessWidget {
-  const Comic_Knihgt({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: LoginView(),
     );
   }

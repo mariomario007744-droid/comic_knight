@@ -1,12 +1,8 @@
-import 'package:comic_knight/const.dart';
-import 'package:comic_knight/views/registor_view.dart';
 import 'package:comic_knight/widgets/appbar_contant.dart';
 import 'package:comic_knight/widgets/custom_form.dart';
 import 'package:flutter/material.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
-
+class RegistorView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,14 +14,18 @@ class LoginView extends StatelessWidget {
       body: ListView(
         children: [
           SizedBox(height: 150),
-          Center(child: Text("تسجيل الدخول", style: TextStyle(fontSize: 36))),
+          Center(child: Text("انشاء حساب", style: TextStyle(fontSize: 36))),
           CustomForm(),
           SizedBox(height: 40),
           GestureDetector(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>RegistorView()));
-            },
-            child: Center(child: Text("انشاء حساب",style: TextStyle(fontSize: 18,color: Color(0xff1D94EB)),)))
+            onTap: () => Navigator.pop(context),
+            child: Center(
+              child: Text(
+                "تسجيل الدخول",
+                style: TextStyle(fontSize: 18, color: Color(0xff1D94EB)),
+              ),
+            ),
+          ),
         ],
       ),
     );
