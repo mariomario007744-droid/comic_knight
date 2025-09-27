@@ -1,5 +1,6 @@
 import 'package:comic_knight/widgets/appbar_contant.dart';
 import 'package:comic_knight/widgets/custom_form.dart';
+import 'package:comic_knight/widgets/custom_google_buttom.dart';
 import 'package:flutter/material.dart';
 
 class RegistorView extends StatelessWidget {
@@ -22,10 +23,12 @@ class RegistorView extends StatelessWidget {
             child: Center(
               child: Text(
                 "تسجيل الدخول",
-                style: TextStyle(fontSize: 18, color: Color(0xff1D94EB)),
+                style: TextStyle(fontSize: 24, color: Color(0xff1D94EB)),
               ),
             ),
           ),
+          SizedBox(height: 20,),
+          CustomGoogleButtom()
         ],
       ),
     );
