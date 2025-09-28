@@ -17,21 +17,31 @@ class LoginView extends StatelessWidget {
 
       body: ListView(
         children: [
-          SizedBox(height: 150),
+          SizedBox(height: 100),
           Center(child: Text("تسجيل الدخول", style: TextStyle(fontSize: 36))),
-          CustomForm(),
-          SizedBox(height: 40),
+          CustomForm(textButtom: "تسجيل الدخول"),
+          SizedBox(height: 20),
+          Divider(color: Colors.black,indent: 18,endIndent: 18,thickness: 2,),
+          SizedBox(height: 20),
+          CustomGoogleButtom(),
+          SizedBox(height: 20),
+
           GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>RegistorView()));
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RegistorView()),
+              );
             },
-            child: Center(child: Text("انشاء حساب",style: TextStyle(fontSize: 24,color: Color(0xff1D94EB)),))),
-            SizedBox(height: 20,),
-            CustomGoogleButtom()
-            
+            child: Center(
+              child: Text(
+                "انشاء حساب",
+                style: TextStyle(fontSize: 24, color: Color(0xff1D94EB)),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
-

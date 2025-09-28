@@ -14,10 +14,14 @@ class RegistorView extends StatelessWidget {
 
       body: ListView(
         children: [
-          SizedBox(height: 150),
+          SizedBox(height: 100),
           Center(child: Text("انشاء حساب", style: TextStyle(fontSize: 36))),
-          CustomForm(),
-          SizedBox(height: 40),
+          CustomForm(textButtom: "انشاء حساب"),
+          SizedBox(height: 20),
+          Divider(color: Colors.black, indent: 18, endIndent: 18, thickness: 2),
+          SizedBox(height: 20),
+          CustomGoogleButtom(),
+          SizedBox(height: 20),
           GestureDetector(
             onTap: () => Navigator.pop(context),
             child: Center(
@@ -27,8 +31,6 @@ class RegistorView extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20,),
-          CustomGoogleButtom()
         ],
       ),
     );
