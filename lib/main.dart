@@ -1,4 +1,4 @@
-import 'package:comic_knight/views/login_view.dart';
+import 'package:comic_knight/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -11,7 +11,7 @@ class Comic_Knihgt extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginView(),
+      home: SplashView(),
     );
   }
 }
