@@ -1,3 +1,4 @@
+import 'package:comic_knight/const.dart';
 import 'package:comic_knight/views/registor_view.dart';
 import 'package:comic_knight/widgets/appbar_contant.dart';
 import 'package:comic_knight/widgets/custom_form.dart';
@@ -11,7 +12,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff7CA369),
+        backgroundColor: kScandePrimaryColor,
         title: Center(child: AppBarContant()),
       ),
 

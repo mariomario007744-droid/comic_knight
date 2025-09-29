@@ -15,7 +15,7 @@ class CusttomLogButtom extends StatelessWidget {
     return Container(
       height: 64,
       decoration: BoxDecoration(
-        color: kPrimaryColor,
+        color: kScandePrimaryColor,
         borderRadius: BorderRadius.circular(16)
       ),
       child: Center(child: Text(textButtom,style: TextStyle(color: Colors.white,fontSize: 32,),)),
