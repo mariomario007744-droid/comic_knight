@@ -1,7 +1,9 @@
 import 'package:comic_knight/const.dart';
 import 'package:comic_knight/widgets/appbar_contant.dart';
+import 'package:comic_knight/widgets/custom_drawer_list.dart';
 import 'package:comic_knight/widgets/custom_grid_view.dart';
 import 'package:comic_knight/widgets/horizontal_list_view.dart';
+import 'package:comic_knight/widgets/leading_drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -10,11 +12,11 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         backgroundColor: kScandePrimaryColor,
+        leading: LeadingDrawer(),
         title: Row(
           children: [
-            Image.asset("assets/images/menu_icon.png"),
             Spacer(flex: 1),
             AppBarContant(),
             Spacer(flex: 1),
@@ -22,6 +24,7 @@ class HomeView extends StatelessWidget {
           ],
         ),
       ),
+      drawer: CustomDrawerList(),
 
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -41,5 +44,4 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-
 

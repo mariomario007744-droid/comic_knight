@@ -18,13 +18,7 @@ class CustomForm extends StatelessWidget {
           SizedBox(height: 20),
           CustomTextfeild(label: "كلمة المرور", hint: "ادخل كلمة المرور"),
           SizedBox(height: 20),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context){
-                return HomeView();
-              }));
-            },
-            child: CusttomLogButtom(textButtom: textButtom))
+          CusttomLogButtom(textButtom: textButtom)
         ],
       ),
     );

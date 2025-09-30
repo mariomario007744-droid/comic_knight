@@ -14,7 +14,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: 3),(){
-      return Navigator.push(context, MaterialPageRoute(builder: (context){
+      return Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
         return LoginView();
       }));
     });
@@ -24,7 +24,7 @@ class _SplashViewState extends State<SplashView> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/images/raphael_ai__11_removebg_preview_1.png'),
+          Image.asset(kAppIcon),
           SizedBox(height: 20,),
           AppBarContant()
         ],
