@@ -7,8 +7,11 @@ class HorizontalListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      scrollDirection: Axis.horizontal,
-      children: [],);
+    return SizedBox(
+      height: 200,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [],),
+    );
   }
 }

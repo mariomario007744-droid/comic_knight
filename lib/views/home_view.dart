@@ -33,9 +33,9 @@ class HomeView extends StatelessWidget {
           child: ListView(
             children: [
               Text('الاكثر مشاهدة', style: TextStyle(fontSize: 28)),
-              SizedBox(height: 200, child: HorizontalListView()),
+              HorizontalListView(),
               Text('المضاف حديثا', style: TextStyle(fontSize: 28)),
-              SizedBox(height: 200, child: HorizontalListView()),
+              HorizontalListView(),
               CustomGridView(),
             ],
           ),
