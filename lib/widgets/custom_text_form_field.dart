@@ -1,15 +1,15 @@
 import 'package:comic_knight/const.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextfeild extends StatelessWidget {
+class CustomTextFormfeild extends StatelessWidget {
   final String label;
   final String hint;
-
-  const CustomTextfeild({required this.label, required this.hint});
+  final void Function(String?)? onSaved;
+  const CustomTextFormfeild({required this.label, required this.hint,this.onSaved});
 
   @override
   Widget build(BuildContext context) {
-    return  TextField(
+    return  TextFormField(
       cursorColor: kPrimaryColor,
       decoration: InputDecoration(
         label: Text(label),
@@ -23,6 +23,7 @@ class CustomTextfeild extends StatelessWidget {
           borderRadius: BorderRadius.circular(16)
         )
       ),
+      onSaved: onSaved,
     );
   }
 }
