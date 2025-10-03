@@ -3,23 +3,14 @@ import 'package:comic_knight/views/home_view.dart';
 import 'package:flutter/material.dart';
 
 class CusttomLogButtom extends StatelessWidget {
-  const CusttomLogButtom({super.key, required this.textButtom});
-
+  const CusttomLogButtom({super.key, required this.textButtom, required this.onTap});
+  final void Function()? onTap;
   final String textButtom;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return HomeView();
-            },
-          ),
-        );
-      },
+      onTap: onTap,
       child: Container(
         height: 64,
         decoration: BoxDecoration(

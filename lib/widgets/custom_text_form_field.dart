@@ -5,7 +5,8 @@ class CustomTextFormfeild extends StatelessWidget {
   final String label;
   final String hint;
   final void Function(String?)? onSaved;
-  const CustomTextFormfeild({required this.label, required this.hint,this.onSaved});
+  final String? Function(String?)? validator;
+  const CustomTextFormfeild({required this.label, required this.hint,this.onSaved, this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +25,7 @@ class CustomTextFormfeild extends StatelessWidget {
         )
       ),
       onSaved: onSaved,
+      validator: validator,
     );
   }
 }
