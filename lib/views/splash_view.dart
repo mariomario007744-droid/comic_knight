@@ -1,7 +1,9 @@
 import 'package:comic_knight/const.dart';
+import 'package:comic_knight/views/home_view.dart';
 import 'package:comic_knight/views/login_view.dart';
 import 'package:comic_knight/widgets/appbar_contant.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -15,7 +17,7 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: 3),(){
       return Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-        return LoginView();
+        return kSession == null? LoginView():HomeView();
       }));
     });
     return Scaffold(

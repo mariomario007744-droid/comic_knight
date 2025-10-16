@@ -20,7 +20,7 @@ class LoginView extends StatelessWidget {
         children: [
           SizedBox(height: 100),
           Center(child: Text("تسجيل الدخول", style: TextStyle(fontSize: 36))),
-          CustomForm(textButtom: "تسجيل الدخول"),
+          CustomForm(textButtom: "تسجيل الدخول",stateAuth: "login",),
           SizedBox(height: 20),
           Divider(color: Colors.black,indent: 18,endIndent: 18,thickness: 2,),
           SizedBox(height: 20),

@@ -17,7 +17,7 @@ class RegistorView extends StatelessWidget {
         children: [
           SizedBox(height: 100),
           Center(child: Text("انشاء حساب", style: TextStyle(fontSize: 36))),
-          CustomForm(textButtom: "انشاء حساب"),
+          CustomForm(textButtom: "انشاء حساب",stateAuth: "signup",),
           SizedBox(height: 20),
           Divider(color: Colors.black, indent: 18, endIndent: 18, thickness: 2),
           SizedBox(height: 20),
