@@ -1,4 +1,3 @@
-import 'package:comic_knight/const.dart';
 import 'package:comic_knight/logic/logic_form_validator.dart';
 import 'package:comic_knight/logic/logic_signin_and_signup_supabase.dart';
 import 'package:comic_knight/views/home_view.dart';
