@@ -8,7 +8,7 @@ class GetRequest {
         .from('comic')
         .select()
         .order('created_at', ascending: false)
-        .limit(9);
+        .limit(50);
         return  data;
   }
 }
