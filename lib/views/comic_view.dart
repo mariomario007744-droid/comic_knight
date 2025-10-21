@@ -49,7 +49,7 @@ class ComicView extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            CustomOpenFileButton(),
+            CustomOpenFileButton(pdfUrl: data.link_pdf,),
             SizedBox(height: 20),
             Container(
               decoration: BoxDecoration(
