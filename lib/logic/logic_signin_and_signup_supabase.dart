@@ -29,10 +29,8 @@ signUp({required String emailUser,required String passWordUser})async{
   );
   kSession = res.session;
   kUser = res.user;
-  print('true');
     return 'true';
 } on Exception catch (e) {
-  print('wait ${e.toString()}');
   return e.toString();
 }
 }

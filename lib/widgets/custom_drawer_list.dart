@@ -1,4 +1,5 @@
 import 'package:comic_knight/const.dart';
+import 'package:comic_knight/widgets/signout.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawerList extends StatelessWidget {
@@ -33,7 +34,7 @@ class CustomDrawerList extends StatelessWidget {
             SizedBox(height: 40,),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Text('الفئات',style: TextStyle(fontSize: 24,color:kTextColor),),
+              child: Text('التصنيفات',style: TextStyle(fontSize: 24,color:kTextColor),),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
@@ -41,7 +42,7 @@ class CustomDrawerList extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Text('تسجيل خروج',style: TextStyle(fontSize: 24,color:kTextColor)),
+              child: SignOut(),
             ),
           ],
         ),
@@ -49,3 +50,4 @@ class CustomDrawerList extends StatelessWidget {
     );
   }
 }
+
