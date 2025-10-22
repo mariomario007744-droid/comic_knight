@@ -11,4 +11,12 @@ class GetRequest {
         .limit(50);
         return  data;
   }
+
+    fetchComicsItem(int id) async {
+    final data = await supabase
+        .from('comic')
+        .select()
+        .eq('id', id);
+        return  data;
+  }
 }

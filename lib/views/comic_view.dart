@@ -1,4 +1,5 @@
 import 'package:comic_knight/const.dart';
+import 'package:comic_knight/logic/get_request.dart';
 import 'package:comic_knight/models/comic_data_model.dart';
 import 'package:comic_knight/widgets/appbar_contant.dart';
 import 'package:comic_knight/widgets/custom_grid_view.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/material.dart';
 
 class ComicView extends StatelessWidget {
   ComicView({required this.data});
-  ComicDataModel data;
+  final  ComicDataModel data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +18,6 @@ class ComicView extends StatelessWidget {
         backgroundColor: kScandePrimaryColor,
         title: AppBarContant(),
       ),
-
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
@@ -28,11 +28,17 @@ class ComicView extends StatelessWidget {
                 SizedBox(child: Image.network(data.link_image), width: 128),
                 SizedBox(width: 8),
                 Expanded(
-                  child: Text(
-                    data.name,
-                    style: TextStyle(fontSize: 18),
-                    softWrap: true,
-                    overflow: TextOverflow.visible,
+                  child: Column(
+                    children: [
+                      Text(
+                        data.name,
+                        style: TextStyle(fontSize: 18),
+                        softWrap: true,
+                        overflow: TextOverflow.visible,
+                      ),
+
+                      ViewesAndFavorite(data: data),
+                    ],
                   ),
                 ),
               ],
@@ -49,11 +55,10 @@ class ComicView extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            CustomOpenFileButton(pdfUrl: data.link_pdf,),
+            CustomOpenFileButton(data: data!),
             SizedBox(height: 20),
             Container(
               decoration: BoxDecoration(
-                color: kScandePrimaryColor,
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Padding(
@@ -69,3 +74,43 @@ class ComicView extends StatelessWidget {
   }
 }
 
+class ViewesAndFavorite extends StatefulWidget {
+  const ViewesAndFavorite({
+    super.key,
+    required this.data,
+  });
+
+  final ComicDataModel data;
+  
+  @override
+  State<ViewesAndFavorite> createState() => _ViewesAndFavoriteState();
+}
+
+class _ViewesAndFavoriteState extends State<ViewesAndFavorite> {
+    List<ComicDataModel> respon=[];
+
+  @override
+  void initState() {
+    super.initState();
+    getComicItem();
+  }
+
+  getComicItem()async{
+    final  snapShot =await GetRequest().fetchComicsItem(widget.data.id);
+        respon.add(ComicDataModel.fromJson(snapShot[0]));
+    setState(() {
+      
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(width: 10),
+        Icon(Icons.remove_red_eye),
+        SizedBox(width: 10),
+        Text(respon.isEmpty? widget.data.viewed.toString():respon[0].viewed.toString()),
+      ],
+    );
+  }
+}
