@@ -19,4 +19,20 @@ class GetRequest {
         .eq('id', id);
         return  data;
   }
+
+    fetchParts(String name_folder_data) async {
+    final supabase = Supabase.instance.client;
+  final comicParts = await supabase
+  .from('comic')
+  .select().eq('name_folder_data', name_folder_data);
+  return comicParts;
+  }
+
+      fetchViews() async {
+    final supabase = Supabase.instance.client;
+  final comicParts = await supabase
+  .from('comic')
+  .select().order('viewed' , ascending: false).limit(10);
+  return comicParts;
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:comic_knight/const.dart';
 import 'package:comic_knight/logic/get_request.dart';
 import 'package:comic_knight/models/comic_data_model.dart';
+import 'package:comic_knight/widgets/vewes_and_favorite.dart';
 import 'package:comic_knight/widgets/appbar_contant.dart';
 import 'package:comic_knight/widgets/custom_grid_view.dart';
 import 'package:comic_knight/widgets/custom_open_file_button.dart';
@@ -9,7 +10,7 @@ import 'package:flutter/material.dart';
 
 class ComicView extends StatelessWidget {
   ComicView({required this.data});
-  final  ComicDataModel data;
+  final ComicDataModel data;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +56,7 @@ class ComicView extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            CustomOpenFileButton(data: data!),
+            CustomOpenFileButton(data: data),
             SizedBox(height: 20),
             Container(
               decoration: BoxDecoration(
@@ -63,54 +64,13 @@ class ComicView extends StatelessWidget {
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 18),
-                child: CustomGridView(),
+                child: CustomGridView(respon: GetRequest().fetchParts(data.name_folder_data)),
               ),
             ),
-            HorizontalListView(),
+            HorizontalListView(respon: GetRequest().fetchComics(),),
           ],
         ),
       ),
-    );
-  }
-}
-
-class ViewesAndFavorite extends StatefulWidget {
-  const ViewesAndFavorite({
-    super.key,
-    required this.data,
-  });
-
-  final ComicDataModel data;
-  
-  @override
-  State<ViewesAndFavorite> createState() => _ViewesAndFavoriteState();
-}
-
-class _ViewesAndFavoriteState extends State<ViewesAndFavorite> {
-    List<ComicDataModel> respon=[];
-
-  @override
-  void initState() {
-    super.initState();
-    getComicItem();
-  }
-
-  getComicItem()async{
-    final  snapShot =await GetRequest().fetchComicsItem(widget.data.id);
-        respon.add(ComicDataModel.fromJson(snapShot[0]));
-    setState(() {
-      
-    });
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(width: 10),
-        Icon(Icons.remove_red_eye),
-        SizedBox(width: 10),
-        Text(respon.isEmpty? widget.data.viewed.toString():respon[0].viewed.toString()),
-      ],
     );
   }
 }

@@ -21,9 +21,11 @@ class _ComicPdfViewState extends State<ComicPdfView> {
   getPdf() async {
     final response = await http.get(Uri.parse(widget.pdfUrl));
     pdf = PdfDocument.openData(response.bodyBytes);
-    setState(() {
-      pdfController = PdfControllerPinch(document: pdf);
-    });
+    if (mounted) {
+  setState(() {
+    pdfController = PdfControllerPinch(document: pdf);
+  });
+}
   }
   @override
   Widget build(BuildContext context) {
