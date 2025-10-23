@@ -1,6 +1,8 @@
 import 'package:comic_knight/logic/get_request.dart';
 import 'package:comic_knight/models/comic_data_model.dart';
+import 'package:comic_knight/widgets/custom_favorites_button.dart';
 import 'package:flutter/material.dart';
+
 
 
 class ViewesAndFavorite extends StatefulWidget {
@@ -41,7 +43,13 @@ class _ViewesAndFavoriteState extends State<ViewesAndFavorite> {
         Icon(Icons.remove_red_eye),
         SizedBox(width: 10),
         Text(respon.isEmpty? widget.data.viewed.toString():respon[0].viewed.toString()),
+        SizedBox(width: 20,),
+        CustomFavoritesButton(id: widget.data.id,),
       ],
     );
   }
 }
+
+
+
+

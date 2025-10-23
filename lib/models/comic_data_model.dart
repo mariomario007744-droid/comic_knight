@@ -8,6 +8,7 @@ class ComicDataModel {
   final int part;
   final int viewed;
 
+
   ComicDataModel({
     required this.id,
     required this.name_folder_data,

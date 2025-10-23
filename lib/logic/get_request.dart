@@ -12,7 +12,7 @@ class GetRequest {
         return  data;
   }
 
-    fetchComicsItem(int id) async {
+    fetchComicsItem(int id,) async {
     final data = await supabase
         .from('comic')
         .select()
