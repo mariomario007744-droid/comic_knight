@@ -16,7 +16,7 @@ class GetRequest {
     final data = await supabase
         .from('comic')
         .select()
-        .eq('id', id);
+        .eq('id', id).maybeSingle();
         return  data;
   }
 

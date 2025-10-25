@@ -1,4 +1,5 @@
 import 'package:comic_knight/const.dart';
+import 'package:comic_knight/views/favorite_view.dart';
 import 'package:comic_knight/widgets/signout.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +39,7 @@ class CustomDrawerList extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Text('المفضلة',style: TextStyle(fontSize: 24,color:kTextColor)),
+              child: FetchFavoriteComic(),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
@@ -48,6 +49,21 @@ class CustomDrawerList extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class FetchFavoriteComic extends StatelessWidget {
+  const FetchFavoriteComic({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>FavoriteView()));
+      },
+      child: Text('المفضلة',style: TextStyle(fontSize: 24,color:kTextColor)));
   }
 }
 

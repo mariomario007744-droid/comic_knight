@@ -1,6 +1,6 @@
 import 'package:comic_knight/const.dart';
 import 'package:comic_knight/logic/get_request.dart';
-import 'package:comic_knight/widgets/appbar_contant.dart';
+import 'package:comic_knight/widgets/custom_appbar_home_view.dart';
 import 'package:comic_knight/widgets/custom_drawer_list.dart';
 import 'package:comic_knight/widgets/custom_grid_view.dart';
 import 'package:comic_knight/widgets/horizontal_list_view.dart';
@@ -19,14 +19,7 @@ class HomeView extends StatelessWidget {
         automaticallyImplyLeading: true,
         backgroundColor: kScandePrimaryColor,
         leading: LeadingDrawer(),
-        title: Row(
-          children: [
-            Spacer(flex: 1),
-            AppBarContant(),
-            Spacer(flex: 1),
-            Image.asset("assets/images/search_icon.png"),
-          ],
-        ),
+        title: CustomAppBarHomeView(),
       ),
       drawer: CustomDrawerList(),
 
@@ -49,3 +42,4 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+

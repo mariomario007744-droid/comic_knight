@@ -28,7 +28,7 @@ class _ViewesAndFavoriteState extends State<ViewesAndFavorite> {
 
   getComicItem()async{
     final  snapShot =await GetRequest().fetchComicsItem(widget.data.id);
-        respon.add(ComicDataModel.fromJson(snapShot[0]));
+        respon.add(ComicDataModel.fromJson(snapShot));
     if (mounted) {
   setState(() {
     
