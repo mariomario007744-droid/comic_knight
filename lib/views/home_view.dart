@@ -1,16 +1,19 @@
 import 'package:comic_knight/const.dart';
-import 'package:comic_knight/logic/get_request.dart';
-import 'package:comic_knight/widgets/custom_appbar_home_view.dart';
+import 'package:comic_knight/views/search_view.dart';
+import 'package:comic_knight/widgets/appbar_contant.dart';
 import 'package:comic_knight/widgets/custom_drawer_list.dart';
-import 'package:comic_knight/widgets/custom_grid_view.dart';
-import 'package:comic_knight/widgets/horizontal_list_view.dart';
+import 'package:comic_knight/widgets/home_view_body.dart';
 import 'package:comic_knight/widgets/leading_drawer.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter/material.dart';
 
-class HomeView extends StatelessWidget {
-  final supabase = Supabase.instance.client;
+class HomeView extends StatefulWidget {
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
 
+class _HomeViewState extends State<HomeView> {
+  final supabase = Supabase.instance.client;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,27 +22,30 @@ class HomeView extends StatelessWidget {
         automaticallyImplyLeading: true,
         backgroundColor: kScandePrimaryColor,
         leading: LeadingDrawer(),
-        title: CustomAppBarHomeView(),
+        title: Row(
+          children: [
+            Spacer(flex: 1),
+            AppBarContant(),
+            Spacer(flex: 1),
+            GestureDetector(
+              child: Image.asset("assets/images/search_icon.png"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return SearchView();
+                    },
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
       drawer: CustomDrawerList(),
 
-      body:Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Directionality(
-                textDirection: TextDirection.rtl,
-                child: ListView(
-                  children: [
-                    Text('الاكثر مشاهدة', style: TextStyle(fontSize: 28)),
-                    HorizontalListView(respon: GetRequest().fetchViews(),),
-                    Text('المضاف حديثا', style: TextStyle(fontSize: 28)),
-                    CustomGridView(
-                      respon: GetRequest().fetchComics(),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+      body: HomeViewBody(),
     );
   }
 }
-

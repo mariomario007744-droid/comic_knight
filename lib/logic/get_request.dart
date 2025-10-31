@@ -9,30 +9,38 @@ class GetRequest {
         .select()
         .order('created_at', ascending: false)
         .limit(50);
-        return  data;
+    return data;
   }
 
-    fetchComicsItem(int id,) async {
+  fetchComicsItem(int id) async {
     final data = await supabase
         .from('comic')
         .select()
-        .eq('id', id).maybeSingle();
-        return  data;
+        .eq('id', id)
+        .maybeSingle();
+    return data;
   }
 
-    fetchParts(String name_folder_data) async {
+  fetchParts(String name_folder_data) async {
     final supabase = Supabase.instance.client;
-  final comicParts = await supabase
-  .from('comic')
-  .select().eq('name_folder_data', name_folder_data);
-  return comicParts;
+    final comicParts = await supabase
+        .from('comic')
+        .select()
+        .eq('name_folder_data', name_folder_data);
+    return comicParts;
   }
 
-      fetchViews() async {
+  fetchViews() async {
     final supabase = Supabase.instance.client;
-  final comicParts = await supabase
-  .from('comic')
-  .select().order('viewed' , ascending: false).limit(10);
-  return comicParts;
+    final comicParts = await supabase
+        .from('comic')
+        .select()
+        .order('viewed', ascending: false)
+        .limit(10);
+    return comicParts;
+  }
+
+  PostgrestTransformBuilder<PostgrestList> fetchiLinkComic(String value) {
+    return supabase.from('comic').select().ilike('name', '%$value%').limit(10);
   }
 }
