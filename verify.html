@@ -24,53 +24,16 @@
       width: 300px;
     }
     h2 { color: #333; }
-    .loading { color: gray; }
+    p { color: #555; margin-top: 10px; }
+    a { color: #007bff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="card">
-    <h2 id="status">جارٍ تأكيد حسابك...</h2>
+    <h2>✅ تم تأكيد الحساب بنجاح!</h2>
+    <p>يمكنك الآن العودة للتطبيق وتسجيل الدخول.</p>
+    <p><a href="https://YOUR_APP_LINK">العودة للتطبيق</a></p>
   </div>
-
-  <script type="module">
-    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-
-    const SUPABASE_URL = "https://dfsrzxmvygdzzgfnbhby.supabase.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmc3J6eG12eWdkenpnZm5iaGJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk0NjEzOTQsImV4cCI6MjA3NTAzNzM5NH0.Sa5q3CAfhjB-oBwhYkauEIF10KZjzxtm8mlzGwltL90"; // خُده من إعدادات Supabase
-    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    async function verifyEmail() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const token = urlParams.get('token');
-      const type = urlParams.get('type');
-      const statusEl = document.getElementById('status');
-
-      if (!token || !type) {
-        statusEl.innerText = "❌ رابط غير صالح";
-        return;
-      }
-
-      try {
-        const { data, error } = await supabase.auth.verifyOtp({
-          token,
-          type,
-          email: '' // مش ضروري هنا، Supabase بيعرفه من التوكن
-        });
-
-        if (error) {
-          statusEl.innerText = "❌ حدث خطأ أثناء تأكيد الحساب";
-          console.error(error);
-        } else {
-          statusEl.innerText = "✅ تم تأكيد الحساب بنجاح!";
-        }
-      } catch (err) {
-        console.error(err);
-        statusEl.innerText = "⚠ حدث خطأ غير متوقع";
-      }
-    }
-
-    verifyEmail();
-  </script>
 </body>
-
 </html>
