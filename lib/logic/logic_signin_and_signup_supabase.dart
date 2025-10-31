@@ -26,6 +26,7 @@ signUp({required String emailUser,required String passWordUser})async{
   final res= await supabase.auth.signUp(
     email: emailUser,
     password: passWordUser,
+    emailRedirectTo: 'https://mariomario007744-droid.github.io/comic_knight/verify.html'
   );
   kSession = res.session;
   kUser = res.user;

@@ -1,5 +1,7 @@
+import 'package:comic_knight/const.dart';
 import 'package:comic_knight/logic/logic_form_validator.dart';
 import 'package:comic_knight/logic/logic_signin_and_signup_supabase.dart';
+import 'package:comic_knight/views/confirmation_view.dart';
 import 'package:comic_knight/views/home_view.dart';
 import 'package:comic_knight/widgets/custom_text_form_field.dart';
 import 'package:comic_knight/widgets/custtom_log_buttom.dart';
@@ -78,7 +80,12 @@ class _CustomFormState extends State<CustomForm> {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return HomeView();
+                return  kUser?.emailConfirmedAt!=null?
+                HomeView()
+                : ConfirmView(
+                  email: email!,
+                  passowrd: passWord!,
+                );
               },
             ),
           );
@@ -99,7 +106,12 @@ class _CustomFormState extends State<CustomForm> {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return HomeView();
+                return  kUser?.emailConfirmedAt!=null?
+                HomeView()
+                : ConfirmView(
+                  email: email!,
+                  passowrd: passWord!,
+                );
               },
             ),
           );
