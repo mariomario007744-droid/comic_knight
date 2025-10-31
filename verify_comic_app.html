@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تأكيد الحساب</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+    h2 { color: #333; }
+    .loading { color: gray; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2 id="status">جارٍ تأكيد حسابك...</h2>
+  </div>
+
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+    const SUPABASE_URL = "https://dfsrzxmvygdzzgfnbhby.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmc3J6eG12eWdkenpnZm5iaGJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk0NjEzOTQsImV4cCI6MjA3NTAzNzM5NH0.Sa5q3CAfhjB-oBwhYkauEIF10KZjzxtm8mlzGwltL90"; // خُده من إعدادات Supabase
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function verifyEmail() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token');
+      const type = urlParams.get('type');
+      const statusEl = document.getElementById('status');
+
+      if (!token || !type) {
+        statusEl.innerText = "❌ رابط غير صالح";
+        return;
+      }
+
+      try {
+        const { data, error } = await supabase.auth.verifyOtp({
+          token,
+          type,
+          email: '' // مش ضروري هنا، Supabase بيعرفه من التوكن
+        });
+
+        if (error) {
+          statusEl.innerText = "❌ حدث خطأ أثناء تأكيد الحساب";
+          console.error(error);
+        } else {
+          statusEl.innerText = "✅ تم تأكيد الحساب بنجاح!";
+        }
+      } catch (err) {
+        console.error(err);
+        statusEl.innerText = "⚠ حدث خطأ غير متوقع";
+      }
+    }
+
+    verifyEmail();
+  </script>
+</body>
+</html>
